@@ -16,6 +16,10 @@ const Posts = () => {
     fetchData();
   }, []);
 
+  const deletePost = id => {
+    setPosts(posts.filter(post => post.id !== id));
+  };
+
   return (
     <div>
       <div>
@@ -37,7 +41,14 @@ const Posts = () => {
               <Link to={'/posts/' + post.id} className="btn btn-primary">
                 View
               </Link>
-              <button className="btn btn-danger">Delete</button>
+              <button
+                className="btn btn-danger"
+                onClick={() => {
+                  deletePost(post.id);
+                }}
+              >
+                Delete
+              </button>
             </div>
           </div>
         ))}
